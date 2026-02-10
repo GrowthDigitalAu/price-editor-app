@@ -1,0 +1,18 @@
+/* Progress Bar Styles */
+.progress-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 300px;
+}
+
+/* Progress Bar Color */
+.Polaris-ProgressBar__Indicator {
+  background-color: #91CDFF !important;
+}
