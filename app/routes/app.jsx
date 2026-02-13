@@ -1,11 +1,15 @@
 import { Outlet, useLoaderData, useRouteError, useNavigate, useLocation } from "react-router";
 import { boundary } from "@shopify/shopify-app-react-router/server";
 import { AppProvider } from "@shopify/shopify-app-react-router/react";
+import { AppProvider as PolarisAppProvider } from "@shopify/polaris";
+import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import customStyles from "../styles/custom.css?url";
+import translations from "@shopify/polaris/locales/en.json";
 import { authenticate } from "../shopify.server";
 import { useEffect } from "react";
 
 export const links = () => [
+  { rel: "stylesheet", href: polarisStyles },
   { rel: "stylesheet", href: customStyles }
 ];
 
@@ -63,12 +67,14 @@ export default function App() {
 
   return (
     <AppProvider embedded apiKey={apiKey}>
-      <s-app-nav>
-        <s-link href="/app/import-product-prices">Import Product Prices</s-link>
-        <s-link href="/app/export-product-prices">Export Product Prices</s-link>
-        <s-link href="/app/subscription">Subscription</s-link>
-      </s-app-nav>
-      {showContent ? <Outlet /> : null}
+      <PolarisAppProvider i18n={translations}>
+        <s-app-nav>
+          <s-link href="/app/import-product-prices">Import Product Prices</s-link>
+          <s-link href="/app/export-product-prices">Export Product Prices</s-link>
+          <s-link href="/app/subscription">Subscription</s-link>
+        </s-app-nav>
+        {showContent ? <Outlet /> : null}
+      </PolarisAppProvider>
     </AppProvider>
   );
 }
