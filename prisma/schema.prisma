@@ -38,7 +38,6 @@ model SubscriptionInfo {
   shop            String   @unique
   subscriptionId  String?
   planName        String?
-  billingCycleDay Int      @default(1)
   startedAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }

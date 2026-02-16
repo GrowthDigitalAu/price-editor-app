@@ -54,14 +54,14 @@ export async function getOrCreateSubscriptionInfo(shop, subscription) {
         shop,
         subscriptionId: subscription?.id,
         planName: subscription?.name || "Free",
-        billingCycleDay: startDate.getDate(),
         startedAt: startDate
       }
     });
   } else if ((subscription && subInfo.subscriptionId !== subscription.id) || (!subscription && subInfo.subscriptionId)) {
     // Update if subscription changed OR if they no longer have an active subscription
     
-    // If upgrading/downgrading, reset the startedAt to now to align with Shopify's new 30-day cycle
+    // Every time a subscription is created or updated, we reset the startedAt to now (or the subscription's start date)
+    // This ensures the usage count resets to 0 and a new 30-day window begins.
     const newStartDate = subscription?.createdAt ? new Date(subscription.createdAt) : new Date();
 
     subInfo = await prisma.subscriptionInfo.update({
