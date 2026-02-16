@@ -23,6 +23,7 @@ export const loader = async ({ request }) => {
                 id
                 name
                 status
+                createdAt
               }
             }
           }
@@ -148,6 +149,7 @@ export const action = async ({ request }) => {
             currentAppInstallation {
               activeSubscriptions {
                 name
+                createdAt
               }
             }
           }

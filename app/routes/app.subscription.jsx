@@ -22,6 +22,7 @@ export const loader = async ({ request }) => {
             name
             status
             test
+            createdAt
           }
         }
       }
