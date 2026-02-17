@@ -2,7 +2,7 @@
 
 client_id = "78dd3796e10d3ba0313349edd13606e8"
 name = "GD: Price Updater Pro"
-application_url = "https://example.com"
+application_url = "https://gd-price-updater-pro.onrender.com"
 embedded = true
 
 [build]
@@ -28,4 +28,4 @@ api_version = "2026-04"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://gd-price-updater-pro.onrender.com/api/auth" ]
