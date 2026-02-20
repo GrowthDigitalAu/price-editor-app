@@ -12,15 +12,15 @@ export function getVariantLimitForPlan(planName) {
 export const SUBSCRIPTION_TIERS = {
     FREE: { 
         name: 'Free', 
-        priceLimit: 30, 
-        compareAtLimit: 30,
+        priceLimit: 3000, 
+        compareAtLimit: 3000,
         description: '30 variant price updates & 30 compare-at price updates'
     },
     STARTER: { 
         name: 'Starter', 
-        priceLimit: 300, 
-        compareAtLimit: 300,
-        description: '300 variant price updates & 300 compare-at price updates'
+        priceLimit: 5000, 
+        compareAtLimit: 5000,
+        description: '5000 variant price updates & 5000 compare-at price updates'
     },
     GROWTH: { 
         name: 'Growth', 
