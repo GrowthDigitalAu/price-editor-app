@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData, useRouteError, useNavigate, useLocation } from "react-router";
+import { Outlet, useLoaderData, useRouteError, useNavigate, useLocation, useNavigation } from "react-router";
 import { boundary } from "@shopify/shopify-app-react-router/server";
 import { AppProvider } from "@shopify/shopify-app-react-router/react";
 import { AppProvider as PolarisAppProvider } from "@shopify/polaris";
@@ -56,6 +56,7 @@ export default function App() {
   const { apiKey, hasActiveSubscription } = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (!hasActiveSubscription && location.pathname !== "/app/subscription") {
@@ -65,9 +66,13 @@ export default function App() {
 
   const isOnSubscriptionPage = location.pathname === "/app/subscription";
   const showContent = hasActiveSubscription || isOnSubscriptionPage;
+  const isLoading = navigation.state !== "idle";
 
   return (
     <AppProvider embedded apiKey={apiKey}>
+      {/* Top Loading Progress Bar */}
+      {isLoading && <div className="loading-bar" />}
+      
       <PolarisAppProvider i18n={translations}>
         <s-app-nav>
           <s-link href="/app/import-product-prices">Import Product Prices</s-link>

@@ -16,3 +16,27 @@
 .Polaris-ProgressBar__Indicator {
   background-color: #91CDFF !important;
 }
+
+/* Global Loading Bar Animation */
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #91CDFF;
+  z-index: 10000;
+  animation: loadingBar 1s ease-in-out infinite;
+}
